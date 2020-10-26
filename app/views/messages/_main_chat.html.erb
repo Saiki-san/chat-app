@@ -12,37 +12,10 @@
 </div>
 
 <div class="messages">
-  <div class="message">
-    <div class="upper-message">
-      <div class="message-user">
-        Tom
-      </div>
-      <div class="message-date">
-        2020/3/31(Wed) 12:43:30
-      </div>
-    </div>
-    <div class="lower-message">
-      <div class="message-content">
-        おはよう
-      </div>
-    </div>
-  </div>
-
-  <div class="message">
-    <div class="upper-message">
-      <div class="message-user">
-        Tom
-      </div>
-      <div class="message-date">
-        2020/3/31(Wed) 12:47:30
-      </div>
-    </div>
-    <div class="lower-message">
-      <div class="message-content">
-        こんばんは
-      </div>
-    </div>
-  </div>
+  <%# collectionオプション %>
+  <%# 指定したインスタンス変数の中にある要素の数だけ、部分テンプレートが繰り返し表示されるrenderメソッドのオプション %>
+  <%# インスタンスに入っている要素が複数あったときでも、eachメソッドを使用せずにrenderで繰り返し表示できる %>
+  <%= render partial: 'message', collection: @messages %>
 </div>
 
 <%= form_with model: [@room, @message], class: 'form', local: true do |f| %>

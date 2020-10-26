@@ -5,6 +5,10 @@ class MessagesController < ApplicationController
     @message = Message.new
     # (Roomモデルより)paramsに含まれているチャットルームのレコード情報を取得
     @room = Room.find(params[:room_id])
+    # チャットルームに紐付いている全てのメッセージ（@room.messages）を@messagesと定義
+    # 一覧画面で表示するメッセージ情報には、ユーザー情報も紐付いて表示
+    # (includes(:user)で、N+1問題を回避(ユーザー情報を1度のアクセスでまとめて取得))
+    @messages = @room.messages.includes(:user)
   end
 
   # messagesコントローラーにcreateアクションを定義
@@ -19,7 +23,12 @@ class MessagesController < ApplicationController
       # messagesコントローラーのindex(room_messages_path)アクションに再度リクエストを送信し、新たにインスタンス変数を生成。これによって保存後の情報に更新される。
       redirect_to room_messages_path(@room)
     else
+      # チャットルームに紐付いている全てのメッセージ（@room.messages）を@messagesと定義
+      # 一覧画面で表示するメッセージ情報には、ユーザー情報も紐付いて表示
+      # (includes(:user)で、N+1問題を回避(ユーザー情報を1度のアクセスでまとめて取得))
+      @messages = @room.messages.includes(:user)
       # 保存に失敗した場合は、同じページ(messagesのindexページ)に戻る
+      # renderを用いることで、投稿に失敗した@messageの情報を保持しつつindex.html.erbを参照
       # indexアクションのインスタンス変数はそのまま
       render :index
     end
