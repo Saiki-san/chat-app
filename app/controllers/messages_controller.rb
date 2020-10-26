@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  # messagesコントローラーにindexアクションを定義
+  # メッセージ表示(messagesコントローラーにindexアクションを定義)
   def index
     # 空のMessageモデルのインスタンス情報
     @message = Message.new
@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     @messages = @room.messages.includes(:user)
   end
 
-  # messagesコントローラーにcreateアクションを定義
+  # メッセージ送信(messagesコントローラーにcreateアクションを定義)
   def create
     @room = Room.find(params[:room_id])
     # チャットルームに紐づいたメッセージのインスタンスを生成
