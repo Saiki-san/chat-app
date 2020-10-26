@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  #editアクションを定義
+  #ユーザー情報編集(editアクションを定義)
   def edit
   end
 
-  #updateアクションを定義
+  #ユーザー情報更新(updateアクションを定義)
   def update
     #ユーザー情報が格納されているcurrent_userメソッドを使用して、ログインしているユーザーの情報(Userモデルにおける、現ユーザー情報)を更新
     #(印数user_params)、↓のpermitよりnameとemailだけ更新

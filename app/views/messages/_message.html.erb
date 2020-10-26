@@ -1,0 +1,23 @@
+<div class="message">
+  <div class="upper-message">
+    <div class="message-user">
+      <!-- 投稿したユーザー名情報を出力する -->
+      <%# messagesテーブルのuser_idに紐付いているユーザー名を、user.name %>
+      <%= message.user.name %>
+    </div>
+    <div class="message-date">
+      <!-- 投稿した時刻を出力する -->
+      <%# messagesテーブルのcreated_atカラムから、投稿した時刻を取得 %>
+      <%# l（エル）メソッドは、日付や時刻を表示するRailsのメソッド。 %>
+      <%# 国や地域によって時刻は異なるが、lメソッドを使えば指定した現地時間に対応できる %>
+      <%= l message.created_at %>
+    </div>
+  </div>
+  <div class="lower-message">
+    <div class="message-content">
+      <!-- 投稿したメッセージ内容を記述する -->
+      <%# messagesテーブルのcontentカラムから、メッセージの内容を取得 %>
+      <%= message.content %>
+    </div>
+  </div>
+</div>

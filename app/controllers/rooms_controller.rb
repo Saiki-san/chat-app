@@ -3,6 +3,7 @@ class RoomsController < ApplicationController
     @room = Room.new
   end
 
+  # ルーム作成
   def create
     @room = Room.new(room_params)
     if @room.save
@@ -12,7 +13,15 @@ class RoomsController < ApplicationController
     end
   end
 
-  def index
+  # ルーム削除
+  def destroy
+    # (Roomモデルより)削除したいチャットルームの情報(ルームid[:id])を取得
+    room = Room.find(params[:id])
+    # destroyアクションは、削除するだけなのでビューの表示は不要。。
+    # そのため、インスタンス変数(@〜)ではなく変数としてroomを定義し、destroyメソッドを使用。
+    room.destroy
+
+    redirect_to root_path
   end
 
   private
