@@ -12,6 +12,9 @@ class RoomsController < ApplicationController
     end
   end
 
+  def index
+  end
+
   private
 
   # ルーム情報の取得
