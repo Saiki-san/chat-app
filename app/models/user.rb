@@ -11,4 +11,6 @@ class User < ApplicationRecord
   # validates :email, presence: true
   # validates :password, presence: true
   # validates :password_confirmation, presence: true
+  has_many :room_users
+  has_many :rooms, through: :room_users
 end
