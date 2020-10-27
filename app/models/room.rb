@@ -6,7 +6,7 @@ class Room < ApplicationRecord
   # これで、roomを削除したとき、roomに関連するmessagesテーブルのレコードとroom_usersテーブルのレコードも、一緒に削除されるように設定
   has_many :users, through: :room_users, dependent: :destroy
   has_many :messages, dependent: :destroy
-  # ルーム作成時にroomが空欄だった場合、作成できない様に設定。
-  validates :room, presence: true
+  # ルーム作成時にチャットルーム名(roomsテーブルのnameカラム)が空欄だった場合、作成できない様に設定。
+  validates :name, presence: true
 
 end
