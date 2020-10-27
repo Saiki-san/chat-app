@@ -6,6 +6,7 @@ class RoomsController < ApplicationController
   # ルーム作成
   def create
     @room = Room.new(room_params)
+    # インスタンス変数@roomにパラメーターが保存できた場合は〜
     if @room.save
       redirect_to root_path
     else
@@ -28,7 +29,7 @@ class RoomsController < ApplicationController
 
   # ルーム情報の取得
   def room_params
-    #ルームのパラメーターをリクエスト、(nameとuser_ids:[]情報だけ)の編集を許可
+    #ルームのパラメーターをリクエスト、(nameと、user_ids:[]情報)の編集を許可
     params.require(:room).permit(:name, user_ids: [])
   end
 end

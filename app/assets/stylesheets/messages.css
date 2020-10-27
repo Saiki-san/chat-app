@@ -36,7 +36,7 @@
   background-color: #2F3E51;
   height: calc(100vh - 100px);
   padding: 0 20px;
-  /* overflow: scroll; */
+  overflow: scroll;
 }
 
 .room {
@@ -81,7 +81,7 @@
   background-color: #FAFAFA;
   height: calc(100vh - 100px - 90px);
   padding: 46px 40px 0;
-  /* overflow: scroll; */
+  overflow: scroll;
 }
 
 .message {
