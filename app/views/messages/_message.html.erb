@@ -19,5 +19,14 @@
       <%# messagesテーブルのcontentカラムから、メッセージの内容を取得 %>
       <%= message.content %>
     </div>
+    <%# ●image_tagメソッド：img要素を生成するRailsのヘルパーメソッド %>
+    <%# 複雑なRailsのディレクトリパスを指定しなくても、
+    モデルから画像ファイルを呼び出して引数に記述するだけで、画像を表示するimg要素を生成できる %>
+    <%# 例：image_tag user(モデル名).avatar(画像ファイル名) 、また image_tag "avatar.png"(画像ファイルのパス) とすることも可能 %>
+    <%# ●variantメソッド：「モデル.ファイル名.variant(resize: '幅x高さ')」画像ファイルの表示サイズを指定 %>
+    <%# ●attached?メソッド：「モデル.ファイル名.attached?」レコードにファイルが添付されているかどうかで、trueかfalseを返すメソッド %>
+    <%# ファイルが添付されていればtrue、添付がなければfalseを返す %>
+    <%# if message.image.attached?と記述することで、画像が存在する場合のみimage_tagが読み込まれるようになる %>
+    <%= image_tag message.image.variant(resize: '500x500'), class: 'message-image' if message.image.attached? %>
   </div>
 </div>

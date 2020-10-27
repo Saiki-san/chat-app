@@ -1,4 +1,4 @@
-<div class="chat-header">
+<div class="chat-header"> <%# 上部 %>
   <div class="left-header">
     <div class="header-title">
       <%# チャットルーム(Messageコントローラーの@room)のparamsの内、nameの情報を表示 %>
@@ -15,14 +15,14 @@
   </div>
 </div>
 
-<div class="messages">
+<div class="messages"> <%# 中部 %>
   <%# collectionオプション %>
   <%# 指定したインスタンス変数の中にある要素の数だけ、部分テンプレートが繰り返し表示されるrenderメソッドのオプション %>
   <%# インスタンスに入っている要素が複数あったときでも、eachメソッドを使用せずにrenderで繰り返し表示できる %>
   <%= render partial: 'message', collection: @messages %>
 </div>
 
-<%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
+<%= form_with model: [@room, @message], class: 'form', local: true do |f| %> <%# 下部 %>
   <div class="form-input">
     <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
     <label class="form-image">
